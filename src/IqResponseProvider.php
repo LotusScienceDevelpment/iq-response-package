@@ -9,7 +9,7 @@ class IqResponseProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->bind('response', function() {
+        $this->app->bind('iq-response', function() {
             return new Response();
         });
     }
