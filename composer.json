@@ -1,0 +1,15 @@
+{
+    "name": "iqdm/iq-response-package",
+    "autoload": {
+        "psr-4": {
+            "Iqdm\\IqResponse\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Danil Sidorenko",
+            "email": "danilsidorenko00@gmail.com"
+        }
+    ],
+    "require": {}
+}
