@@ -14,6 +14,16 @@ abstract class AbstractResponse
     protected int $httpCode;
     protected mixed $payload;
 
+    protected string $controller = '';
+
+    public function __construct()
+    {
+        $controller = app('request')->route()->getAction();
+        if(isset($controller['controller'])) {
+            $this->controller = class_basename(app('request')->route()->getAction()['controller']);
+        }
+    }
+
     public function setMessage(string $message): static
     {
         $this->message = $message;

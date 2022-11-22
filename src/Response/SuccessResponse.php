@@ -3,6 +3,7 @@
 namespace Iqdm\IqResponse\Response;
 
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Response;
 use Iqdm\IqResponse\AbstractResponse;
 
@@ -17,9 +18,10 @@ class SuccessResponse extends AbstractResponse
     public function send(): void
     {
         Response::json([
-            'success' => $this->type->name,
-            'message' => $this->message,
-            'payload' => $this->payload
+            'success'    => $this->type->name,
+            'message'    => $this->message,
+            'payload'    => $this->payload,
+            'controller' => $this->controller
         ], $this->httpCode)->throwResponse();
     }
 }

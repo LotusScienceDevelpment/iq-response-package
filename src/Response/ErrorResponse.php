@@ -17,9 +17,10 @@ class ErrorResponse extends AbstractResponse
     public function send(bool $withoutThrow = false): void
     {
         Response::json([
-            'success' => $this->type->name,
-            'message' => $this->message,
-            'payload' => $this->payload
+            'success'    => $this->type->name,
+            'message'    => $this->message,
+            'payload'    => $this->payload,
+            'controller' => $this->controller,
         ], $this->httpCode)->throwResponse();
     }
 }
