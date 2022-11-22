@@ -14,13 +14,17 @@ abstract class AbstractResponse
     protected int $httpCode;
     protected mixed $payload;
 
-    protected string $controller = '';
+    protected array $controller = [];
 
     public function __construct()
     {
         $controller = app('request')->route()->getAction();
         if(isset($controller['controller'])) {
-            $this->controller = class_basename(app('request')->route()->getAction()['controller']);
+            list($className, $action) = explode('@', class_basename(app('request')->route()->getAction()['controller']));
+            $this->controller = [
+                'className' => $className,
+                'action' => $action
+            ];
         }
     }
 
